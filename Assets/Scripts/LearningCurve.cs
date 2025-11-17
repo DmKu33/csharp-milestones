@@ -23,13 +23,13 @@ public class LearningCurve : MonoBehaviour
     // single line comment
     void Start()
     {
-        // chapter 2: basic variables
+        // chapter 2 - variables: basics
         Debug.Log(currentAge);
         Debug.Log(currentHeight);
         Debug.Log(characterName);
         Debug.Log(isActive);
 
-        // chapter 3: debug.logformat
+        // chapter 3 - methods: debug.logformat
         Debug.LogFormat("Name: {0}, Age: {1}", characterName, currentAge);
         
         // string concatenation with +
@@ -46,7 +46,7 @@ public class LearningCurve : MonoBehaviour
         string greeting = GenerateGreeting(characterName, currentAge);
         Debug.Log(greeting);
 
-        // chapter 4: if, else if, else
+        // chapter 4 - conditionals: if, else if, else
         if (currentAge < 18)
         {
             Debug.Log("Minor");
@@ -146,4 +146,3 @@ public class LearningCurve : MonoBehaviour
     {
     }
 }
-
