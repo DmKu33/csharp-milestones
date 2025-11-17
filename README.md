@@ -66,20 +66,6 @@ The Building Blocks of Programming (22–37)
 ## Chapter 3
 Diving into Variables, Types, and Methods (38–64)
 
-- [x] Update Assets/Scripts/LearningCurve.cs
-	- [x] Variables
-		- [x] Use access modifiers to make your variables explicitly `public` and `private`
-		- [x] Use `Debug.Log` and `Debug.LogFormat` to log your variables to the console
-		- [x] Concatenate strings using the `+` operator, and the string interpolation method `$`
-	- [x] Methods
-		- [x] Define a simple method with parameters
-		- [x] Add a return type and return some data from a method
-		- [x] Use data returned from a method
-- [x] ✏️ Explain some differences between public and private variables: **Public variables are accessible from other classes and visible in the Unity Inspector, where designers can modify values without changing code. Private variables are only accessible within the class where they're declared, which provides encapsulation and protects data from unwanted external modification. This gives better code structure + security.**
-
-
-## Chapter 4
-Control Flow and Collection Types (65–93)
 
 - [x] Update Assets/Scripts/LearningCurve.cs
 	- [x] Conditionals
@@ -104,7 +90,7 @@ Control Flow and Collection Types (65–93)
 Working with Classes, Structs, and OOP (94–119)
 
 - Classes
-	- [ ] ✏️ Explain the difference between reference and value type variables: **??**
+	- [ ] ✏️ Explain the difference between reference and value type variables: **reference types store memory addresses, where multiple variables can reference the same object. While types store actual (each variable gets its own independent copy)**
 	- [ ] Create Assets/Scripts/Character.cs
 		- [ ] Create a `Character` class
 		- [ ] Create `string` and `int` fields inside the Character class
@@ -163,7 +149,7 @@ Movement, Camera Controls, and Collisions (149–175)
 - [ ] Physics and Collisions
 	- [ ] Use `FixedUpdate()` to control game objects using Unity's physics engine
 	- [ ] Apply physics forces to a game object RigidBody using `MovePosition()`
-	- [ ] ✏️ Q: Will a [collision detection](https://docs.unity3d.com/Manual/CollidersOverview.html) occur when a Kinematic Rigidbody Collider touches a Static Collider? : **??**
+	- [ ] ✏️ Q: Will a [collision detection](https://docs.unity3d.com/Manual/CollidersOverview.html) occur when a Kinematic Rigidbody Collider touches a Static Collider? : **No, because Kinematic Rigidbody Colliders do not generate collision events with Static Colliders**
 	- [ ] Use `OnCollisionEnter()` to check if a game object has run into another collider
 	- [ ] Use `Destroy()` to remove a game object from the scene
 	- [ ] Use `OnTriggerEnter()` and `OnTriggerExit()` to detect when two colliders start and stop touching

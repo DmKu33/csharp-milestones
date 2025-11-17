@@ -128,6 +128,36 @@ public class LearningCurve : MonoBehaviour
         {
             Debug.Log($"{kvp.Key}: {kvp.Value}");
         }
+
+        // chapter 5 - classes: instantiate character objects
+        Character hero = new Character("Arin", 100);
+        hero.PrintStatsInfo();
+
+        Character heroine = new Character("Lyra", 150);
+        heroine.PrintStatsInfo();
+
+        // chapter 5 - structs: instantiate weapon objects
+        Weapon huntingBow = new Weapon("Hunting Bow", 25);
+        huntingBow.PrintWeaponInfo();
+
+        Weapon warBow = new Weapon("War Bow", 45);
+        warBow.PrintWeaponInfo();
+
+        // chapter 5 - child classes: instantiate paladin
+        Weapon knightSword = new Weapon("Knight's Sword", 55);
+        Paladin knight = new Paladin("Sir Galahad", 200, knightSword);
+        knight.PrintStatsInfo();
+
+        // chapter 5 - referencing objects: get component
+        Transform cameraTransform = GetComponent<Transform>();
+        Debug.Log($"Camera position: {cameraTransform.localPosition}");
+
+        GameObject lightObject = GameObject.Find("Directional Light");
+        if (lightObject != null)
+        {
+            Transform lightTransform = lightObject.GetComponent<Transform>();
+            Debug.Log($"Light position: {lightTransform.localPosition}");
+        }
     }
 
     // method with parameters
@@ -142,7 +172,47 @@ public class LearningCurve : MonoBehaviour
         return $"Hello, {name}, age {age}";
     }
 
+    // chapter 7 - movement: keyboard input
     void Update()
     {
+        float moveSpeed = 5.0f;
+        float rotateSpeed = 75.0f;
+
+        // vertical movement
+        float vInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward * vInput * moveSpeed * Time.deltaTime);
+
+        // horizontal rotation
+        float hInput = Input.GetAxis("Horizontal");
+        transform.Rotate(Vector3.up * hInput * rotateSpeed * Time.deltaTime);
+    }
+
+    // chapter 7 - physics: fixed update
+    void FixedUpdate()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime); // example 
+        }
+    }
+
+    // chapter 7 - collision detection
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log($"Collided with: {collision.gameObject.name}");
+        Destroy(collision.gameObject); // example
+    }
+
+    // chapter 7 - trigger enter
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"Trigger entered: {other.gameObject.name}");
+    }
+
+    // chapter 7 - trigger exit
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log($"Trigger exited: {other.gameObject.name}");
     }
 }
