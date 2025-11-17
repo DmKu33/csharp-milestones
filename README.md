@@ -134,6 +134,8 @@ Getting Your Hands Dirty with Unity (120–148)
 - [ ] Create timeline animations by recording keyframes and editing curves in Unity
 - [ ] Add and edit a particle system to a game object in Unity
 
+-- Finished all of the above for CH6
+
 
 
 

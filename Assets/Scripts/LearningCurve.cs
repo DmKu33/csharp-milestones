@@ -16,6 +16,15 @@ public class LearningCurve : MonoBehaviour
     private int experiencePoints = 0;
     private bool hasKey = false;
 
+    // chapter 8: character control
+    public float jumpForce = 5.0f;
+    public LayerMask groundLayer;
+    private bool isGrounded = true;
+
+    // chapter 8: shooting mechanic
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 10.0f;
+
     /*
      * multi-line comment
      */
@@ -185,6 +194,24 @@ public class LearningCurve : MonoBehaviour
         // horizontal rotation
         float hInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up * hInput * rotateSpeed * Time.deltaTime);
+
+        // chapter 8 - jump: keycode enum
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isGrounded = false;
+            }
+        }
+
+        // chapter 8 - shooting: instantiate projectile
+        if (Input.GetMouseButtonDown(0) && projectilePrefab != null)
+        {
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            Destroy(projectile, 3f);
+        }
     }
 
     // chapter 7 - physics: fixed update
@@ -202,6 +229,12 @@ public class LearningCurve : MonoBehaviour
     {
         Debug.Log($"Collided with: {collision.gameObject.name}");
         Destroy(collision.gameObject); // example
+
+        // chapter 8 - isgrounded: layer mask check
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
+            isGrounded = true;
+        }
     }
 
     // chapter 7 - trigger enter
